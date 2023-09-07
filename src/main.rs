@@ -9,3 +9,12 @@ fn main() {
 
 }
 
+fn vdf(seed: BaseElement, n: usize) -> BaseElement {
+    let mut currect_state = seed;
+
+    for _ in 0..n {
+        currect_state = (currect_state - CONST_42).exp(INV_ALPHA);
+    }
+    currect_state
+}
+
