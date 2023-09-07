@@ -18,3 +18,15 @@ fn vdf(seed: BaseElement, n: usize) -> BaseElement {
     currect_state
 }
 
+#[derive(Clone)]
+struct VdfInputs {
+    seed: BaseElement,
+    result: BaseElement,
+}
+
+impl Serializable for VdfInputs {
+    fn write_into<W: winterfell::ByteWriter>(&self, target: &mut W) {
+        target.write(self.seed);
+        target.write(self.result);
+    }
+}
